@@ -9,6 +9,8 @@ export default function (state = {}, action){
             return {...state, loginSuccess: action.payload}
         case TYPE.REGISTER_USER:
             return {...state, register: action.payload}
+        case TYPE.AUTH_USER:
+            return {...state, userData: action.payload}
         default:
             return state;
     }

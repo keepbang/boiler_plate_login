@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {loginUser} from '../../../_actions/user_action'
+import {withRouter} from 'react-router-dom'
+
 function LoginPage(props) {
 
     const dispatch = useDispatch()
@@ -32,6 +34,11 @@ function LoginPage(props) {
                     alert('Error')
                 }
             })
+    }
+
+    const onRegisterHandler = (e) => {
+        e.preventDefault()
+        props.history.push('/register')
 
     }
 
@@ -50,12 +57,16 @@ function LoginPage(props) {
                 <label>Password</label>
                 <input type="password" value={Password} onChange={onPasswordHandler}/>
                 <br/>
-                <button>
+                <button style={{marginBottom : '5px'}}>
                     Login
                 </button>
-            </form>  
+                <button type="button" onClick={onRegisterHandler}>
+                    회원 가입
+                </button>
+            </form> 
+            
         </div>
     )
 }
 
-export default LoginPage
+export default withRouter(LoginPage)
